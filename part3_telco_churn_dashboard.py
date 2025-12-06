@@ -3,8 +3,7 @@ import requests
 import pandas as pd
 import json
 
-# --- CONFIGURATION ---
-# PASTE YOUR LAMBDA API URL HERE
+# CONFIGURATION
 API_URL = "https://yhj9s420fi.execute-api.us-east-1.amazonaws.com/default/DSCI352_PredictTelcoChurn"
 
 st.set_page_config(page_title="Telco Churn Predictor", page_icon="📉", layout="wide")
@@ -18,7 +17,7 @@ Adjust the customer profile below to see how the probability of churn changes in
 # --- TABS ---
 tab1, tab2 = st.tabs(["Single Customer Analysis", "Batch Prediction (CSV)"])
 
-# === TAB 1: FULL MANUAL ENTRY ===
+# TAB 1: FULL MANUAL ENTRY
 with tab1:
     st.header("Customer Profile")
     
@@ -107,7 +106,7 @@ with tab1:
             except Exception as e:
                 st.error(f"Connection failed: {e}")
 
-# === TAB 2: BATCH UPLOAD (Keep this same as before) ===
+# TAB 2: BATCH UPLOAD (Keep this same as before)
 with tab2:
     st.header("Batch Prediction via CSV")
     uploaded_file = st.file_uploader("Upload File", type=["csv"])
