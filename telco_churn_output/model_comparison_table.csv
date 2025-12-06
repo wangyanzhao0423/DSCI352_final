@@ -1,0 +1,6 @@
+name,type,auc,accuracy,grad_abs_mean
+GradientBoosting,sklearn,0.8433620088351547,,
+LogisticRegression,sklearn,0.8418610659019866,,
+keras_mlp,keras,0.8362732181146505,0.7927608232789212,0.0014722576597705483
+SGDClassifier,sklearn,0.8296442687747035,,
+RandomForest,sklearn,0.8160156552739674,,
