@@ -53,7 +53,8 @@ from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-LOCAL_CSV = "WA_Fn-UseC_-Telco-Customer-Churn.csv"
+LOCAL_CSV = "data/WA_Fn-UseC_-Telco-Customer-Churn.csv"
+OUTPUT_DIR = "telco_churn_output"
 
 # AWS Config (for Bonus)
 S3_BUCKET = os.environ.get("MODEL_BUCKET", "dsci352-telco-churn-project") # replace with my bucket
@@ -472,14 +473,16 @@ def main():
     )
 
     # (Self-Added) Save training history locally for inspection
+    history_path = os.path.join(OUTPUT_DIR, "keras_history.csv")
     history_df = pd.DataFrame(history.history)
-    history_df.to_csv("keras_history.csv", index=False)
-    print("Saved training history to keras_history.csv")
+    history_df.to_csv(history_path, index=False)
+    print(f"Saved training history to {history_path}")
 
     # Save gradient history locally for inspection
-    with open("keras_gradients.json", "w") as f:
+    gradient_path = os.path.join(OUTPUT_DIR, "keras_gradients.json")
+    with open(gradient_path, "w") as f:
         json.dump(grad_tracker.history, f, indent=2)
-    print("Saved gradient stats to keras_gradients.json")
+    print(f"Saved gradient stats to {gradient_path}")
 
 
     # Step 4: Evaluate Keras on validation set
@@ -576,9 +579,10 @@ def main():
     # At this point you can:
     #   - Save model_leaderboard to disk as JSON or CSV for inspection.
     #   - Create plots (e.g., bar charts of AUC/accuracy) in a separate script/notebook.
-    with open("model_leaderboard_telco.json", "w") as f:
+    leaderboard_path = os.path.join(OUTPUT_DIR, "model_leaderboard_telco.json")
+    with open(leaderboard_path, "w") as f:
         json.dump(model_leaderboard, f, indent=2)
-    print("Saved model_leaderboard_telco.json")
+    print(f"Saved model_leaderboard_telco.json to {leaderboard_path}")
 
     # Notes: Visualize results in part1_telco_churn_viz.py
 

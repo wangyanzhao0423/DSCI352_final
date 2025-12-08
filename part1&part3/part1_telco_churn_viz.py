@@ -10,11 +10,12 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
 
-# Define file paths (must match what your main script saves)
-GRADIENT_FILE = "keras_gradients.json"
-LEADERBOARD_FILE = "model_leaderboard_telco.json"
+# Define file paths
 OUTPUT_DIR = "telco_churn_output"
-KERAS_HISTORY_FILE = "keras_history.csv"
+
+GRADIENT_FILE = os.path.join(OUTPUT_DIR, "keras_gradients.json")
+LEADERBOARD_FILE = os.path.join(OUTPUT_DIR, "model_leaderboard_telco.json")
+KERAS_HISTORY_FILE = os.path.join(OUTPUT_DIR, "keras_history.csv")
 
 def load_data():
     """Loads gradient and leaderboard data from JSON files."""
